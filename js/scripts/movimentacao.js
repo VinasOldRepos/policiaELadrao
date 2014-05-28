@@ -76,7 +76,7 @@ $('document').ready(function() {
     		policia.style.top = arrPosPolicia[1];
 
             // Se polícia alcançou o ladrão
-            if ($.alcancou(arrPosPolicia, arrPosLadrao)) {
+            if ($.alcancou(arrPosPolicia, TAMANHOOBJETO, arrPosLadrao, TAMANHOOBJETO)) {
                 $.fimDeJogo("Voce foi preso!!")
             }
         };

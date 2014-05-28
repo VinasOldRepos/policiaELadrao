@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title>Teste de jogo em JavaScript</title>
+
+    <script type="text/javascript" src="js/lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.mobile-1.4.2.min.js"></script>
+    
+    <script type="text/javascript" src="js/scripts/m_scripts.js"></script>
+    <script type="text/javascript" src="js/scripts/cerebro.js"></script>
+    <script type="text/javascript" src="js/scripts/movimentacao.js"></script>
+
+    <style>
+        .backgroundTap{
+            position: absolute;
+            background-image: url('arrow_up.png');
+            background-repeat:no-repeat;
+            background-position:center;
+            /*background-color: #654325;*/
+        }
+
+        .TapUp {
+            float: right;
+            top: -8;
+            left: 140;
+            width: 300;
+            height: 200;
+        }
+
+        .TapLeft {
+            float: left;
+            top: 140;
+            left: -8;
+            width: 200;
+            height: 300;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+        }
+
+        .TapDown {
+            float: left;
+            top: 392;
+            left: 140;
+            width: 300;
+            height: 200;
+            -webkit-transform: rotate(-180deg);
+            -moz-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+
+        .TapRight {
+            float: left;
+            top: 140;
+            left: 392;
+            width: 200;
+            height: 300;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body width="600" style="width: 600px;">
+
+<div id="l_fundo" style="position: absolute; top: 0; left: 0; width: 600; height: 600; background-color: #000000; color: #FFFFFF;">&nbsp;</div>
+
+<div id="ladrao" style="position: absolute; top: 0; left: 0; width: 50; height: 50; /*background-color: #FFFFFF;*/">
+	<img src="ladrao_01.png" width="50" height="50" />
+</div>
+<div id="policia" style="position: absolute; top: -30; left: -30; width: 50; height: 50; /*background-color: #00FFFF;*/">
+    <img src="policia_01.png" width="50" height="50" />
+</div>
+
+<div id="dinheiro" style="position: absolute; top: 600; left: 600; width: 20; height: 20; /*background-color: #FFF000;*/">
+    <img src="ouro_01.png" width="20" height="20" />
+</div>
+
+<div style="position: absolute; float: left; padding-top: 600px;">
+    <div style="color: #000000;">Tempo:</div>
+    <div id="tempo" style="color: #000000;">666</span>
+</div>
+
+<div>
+    <div style="color: #000000;">pontos:</div>
+    <div id="pontos" style="color: #000000;">0</span>
+</div>
+
+<div>
+    <div style="color: #000000;">fase:</div>
+    <div id="fase" style="color: #000000;">0</span>
+</div>
+
+<div id="resetGame">
+    >> RESET <<
+</div>
+
+<div id="touchUp" class="TapUp backgroundTap"></div>
+<div id="touchLeft" class="TapLeft backgroundTap"></div>
+<div id="touchDown" class="TapDown backgroundTap"></div>
+<div id="touchRight" class="TapRight backgroundTap"></div>
+
+</body>
+</html>

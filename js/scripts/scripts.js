@@ -1,4 +1,5 @@
 var TAMANHOOBJETO = 50,
+    TAMANHODINHEIRO = 20,
 	TEMPOPADRAO = 20,
     PONTOSPORFASE = 40,
     VALORDINHEIRO = 5,
@@ -126,7 +127,7 @@ $(document).ready(function() {
     // Função que checa se ladrão pegou o dinheiro
     $.pegouDinheiro = function() {
         // Se ladrão pegou dinheiro
-        if ($.alcancou(arrPosLadrao, arrPosDinheiro)) {
+        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosDinheiro, TAMANHODINHEIRO)) {
             pontos = pontos + VALORDINHEIRO;
             tempo = tempo + TEMPOBONUS;
             $("#pontos").html(pontos);
@@ -148,12 +149,12 @@ $(document).ready(function() {
     };
 
     // Função que checa se dois objetos se tocaram
-    $.alcancou = function(objUm, objDois) {
+    $.alcancou = function(cacador, tamanhoCacador, presa, tamanhoPresa) {
         if (
-            ((objUm[0] > (objDois[0] - TAMANHOOBJETO))
-            && (objUm[0] < (objDois[0] + TAMANHOOBJETO)))
-            && ((objUm[1] > (objDois[1] - TAMANHOOBJETO))
-            && (objUm[1] < (objDois[1] + TAMANHOOBJETO)))
+            ((cacador[0] >= (presa[0] - tamanhoCacador))
+            && (cacador[0] < (presa[0] + tamanhoPresa)))
+            && ((cacador[1] >= (presa[1] - tamanhoCacador))
+            && (cacador[1] < (presa[1] + tamanhoPresa)))
         ){
             return true;
         }

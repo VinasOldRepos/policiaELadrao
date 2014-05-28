@@ -22,6 +22,30 @@ $('document').ready(function() {
         	}
         };
 
+        // Define a posição relativa X
+        $.definirPosRelX = function(cacador, presa) {
+            if (cacador > presa) {
+                thisPosRelX = 'esquerda';
+            } else if (cacador == presa) {
+                thisPosRelX = 'igual';
+            } else {
+                thisPosRelX = 'direita';
+            }
+            return thisPosRelX;
+        };
+
+        // Define a posição relativa Y
+        $.definirPosRelY = function(cacador, presa) {
+            if (cacador > presa) {
+                thisPosRelY = 'acima';
+            } else if (cacador == presa) {
+                thisPosRelY = 'igual';
+            } else {
+                thisPosRelY = 'abaixo';
+            }
+            return thisPosRelY;
+        };
+
         // Checa dif (em coords) entre o Policia e a posição x do alvo
         $.checaPosGeoX = function() {
         	if (posRelX == 'direita') {
