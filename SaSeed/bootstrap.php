@@ -1,0 +1,67 @@
+<?php
+/************************************************************************************
+* Name:				Bootstrap														*
+* File:				SaSeed\bootstrap.php 											*
+* Author(s):		Vinas de Andrade e Leandro Menezes								*
+*																					*
+* Description: 		This file loads basic Settings and starts up the right			*
+*					Controller for and Action Function.								*
+*																					*
+* Creation Date:	15/11/2012														*
+* Version:			1.13.0523														*
+* License:			http://www.opensource.org/licenses/bsd-license.php BSD			*
+*************************************************************************************/
+
+	namespace SaSeed;
+
+	// Define Charset
+	header('Content-type: text/html; charset=UTF-8');
+
+	// *********************** \\
+	//	Define Basic settings  \\
+	// *********************** \\
+	require_once('Settings.php'); // (Must be the first include)
+	require_once("autoload.php");
+
+	// *********************** \\
+	//  Include Basic Classes
+	// *********************** \\
+	
+	require_once(APP_PATH.'SaSeed/Session.php');
+	
+	// Database Connection
+	if (DB_NAME) {
+		$db	= new Database();
+		$db->DBConnection(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	}
+
+	// Define General JSs
+	$GLOBALS['general_js']	= '<script type="text/javascript" src="/Application/View/js/libs/jquery-2.1.1.min.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/jquery.mobile-1.4.2.min.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/swipeupdown.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/facebook.js"></script>'.PHP_EOL;
+	/*$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/hammer.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/ion.sound.js"></script>'.PHP_EOL;*/
+
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/setup.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/scripts.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/cerebro.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/movimentacao.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/interactions.js"></script>'.PHP_EOL;
+
+	// Define General CSSs
+	$GLOBALS['general_css']	= '<link href="/Application/View/css/styles.css" rel="stylesheet">'.PHP_EOL;	// Se não houver, definir como vazio ''
+
+	// ********************************************** \\
+	//	Load Specific Controller and Action Function  \\
+	// ********************************************** \\
+
+	// Define Controller, Action and Parameters
+	$URLparams					= new URLRequest();
+	$GLOBALS['controller_name']	= $URLparams->getController();
+	$GLOBALS['controller']		= "\Application\Controller\\".$URLparams->getController();
+	$GLOBALS['action_function']	= $URLparams->getActionFunction();
+
+	// Call in Controller and Functions whithin proper environment
+	$obj = new $GLOBALS['controller'];
+	$obj->$GLOBALS['action_function']();

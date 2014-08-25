@@ -1,0 +1,138 @@
+<html style="width: 500px;">
+<head>
+    <link rel="icon" href="/Application/View/img/favicon.ico" type="image/x-icon" />
+	<title>The Chase</title>
+    <meta content='width=100%, user-scalable=1' name='viewport' />
+
+    <?php echo $GLOBALS['general_js'] ?>
+    <?php echo $GLOBALS['general_css'] ?>
+
+</head>
+
+<body width="500" style="width: 500px;" topmargin="0" leftmargin="0">
+
+<input type="hidden" name="justOpened" id="justOpened" value="1" />
+<input type="hidden" name="userId" id="userId" value="" />
+<input type="hidden" name="maxScore" id="maxScore" value="0" />
+
+<div id="l_fundo" class="fundo"></div>
+
+<div id="presentation" class="presentation"></div>
+
+<div id="ladrao" class="personagem">
+	<img src="/Application/View/img/ladrao_01.gif" width="50" height="50" />
+</div>
+
+<div id="policia" class="personagem">
+    <img id="policiaImagem" src="/Application/View/img/guarda.gif" width="50" height="50" />
+</div>
+
+<div id="policia2" class="personagem">
+    <img id="policiaImagem2" src="/Application/View/img/guarda.gif" width="50" height="50" />
+</div>
+
+<div id="contador" class="contador">666</div>
+<div id="contador2" class="contador">666</div>
+
+<div id="relogio" class="item" />
+    <img src="/Application/View/img/clock.png" width="25" height="25" />
+</div>
+<div id="dinheiro" class="item" />
+    <img src="/Application/View/img/money2.png" width="25" height="25" />
+</div>
+<div id="molotov" class="item" />
+    <img src="/Application/View/img/molotov_v2.png" width="25" height="25" />
+</div>
+<div id="bomba" class="item" />
+    <img src="/Application/View/img/bomb_v2.png" width="25" height="25" />
+</div>
+
+<div id="busted" class="busted">
+    <img src="/Application/View/img/busted.png" width="500" height="500" alt="You got busted!" />
+    <div id="loginStatus">
+    </div>
+    <div class="facebookLoginButton" id="facebookLoginButton">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    </div>
+    <div class="buttonRanking">RANKING</div>
+</div>
+
+<div id="timeUp" class="timeUp">
+    <img src="/Application/View/img/timeisup_01.png" width="500" height="500" alt="Time is up!" />
+    <div id="loginStatus">
+    </div>
+    <div class="facebookLoginButton" id="facebookLoginButton">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    </div>
+    <div class="buttonRanking">RANKING</div>
+</div>
+
+<div id="formRanking" class="formRanking">
+    <input type="hidden" name="gamePoints" id="gamePoints" value="0" />
+    <input type="hidden" name="nickname" id="nickname" value="" />
+    <input type="hidden" name="email" id="email" value="" />
+    <!--div class="nickname">Nickname: <input type="text" name="nickname" id="nickname" class="textField" /></div>
+    <div class="email">Email: <input type="text" name="email" id="email" class="textField" /></div>
+	<img id="btOk" class="btOk" src="/Application/View/img/bt_ok_01.gif" width="50" height="50" alt="OK" />
+    <img id="btVerRanking" class="btVerRanking" src="/Application/View/img/bt_verranking_01.png" width="50" height="50" alt="Login" /-->
+</div>
+
+<div id="ranking">
+	<div class="title">RANKING</div>
+	<div id="lista" class="lista">
+	</div>
+</div>
+
+<!--div id="touchUp" class="TapUp backgroundTap"></div>
+<div id="touchLeft" class="TapLeft backgroundTap"></div>
+<div id="touchDown" class="TapDown backgroundTap"></div>
+<div id="touchRight" class="TapRight backgroundTap"></div -->
+
+<!--div class="barraAction">
+    <div class="action" id="actionLegenda"></div>
+</div-->
+
+<div class="barraInfo">
+    <div style="float: left; padding-top: 10px; position: absolute; width: 390px;">
+        <div id="instructionsBar" class="bar">
+            <div class="setas">
+                <img src="/Application/View/img/setas.png" width="48" height="70" alt="slide to move" />
+            </div>
+            <div class="slideLabel">slide to move</div>
+            <div class="ladraoInstruction">
+                <img src="/Application/View/img/ladrao_bar.png" width="99" height="86" alt="slide to move" />
+            </div>
+            <div class="collectLabel">
+                collect
+                <div class="items">
+                    <div style="float: left; padding-right: 14px;"><img src="/Application/View/img/money2.png" width="25" height="25" /></div>
+                    <div style="float: left; padding-right: 14px;"><img src="/Application/View/img/molotov_v2.png" width="25" height="25" /></div>
+                    <div style="float: left;"><img src="/Application/View/img/bomb_v2.png" width="25" height="25" /></div>
+                </div>
+            </div>
+        </div>
+        <div id="scoreBar" class="bar">
+            <div style="float: left; padding-left: 10px; position: absolute;">
+                <div class="tituloMostrador">Time:</div>
+                <div id="tempo" class="mostrador">666</div>
+            </div>
+            <div style="float: left; padding-left: 120px; position: absolute;">
+                <div class="tituloMostrador">Score:</div>
+                <div id="pontos" class="mostrador">0</div>
+            </div>
+            <div style="float: left; padding-left: 240px; position: absolute; width: 95px;">
+                <div class="tituloMostrador">Dificulty:</div>
+                <div id="fase" class="mostrador">0</div>
+            </div>
+        </div>
+    </div>
+    <div style="float: left; padding-left: 390px; position: absolute;">
+        <img id="resetGame" src="/Application/View/img/start.png" width="100" height="100" />
+    </div>
+</div>
+
+<div class="action" id="actionLegenda"></div>
+<div class="action" id="actionLegenda2"></div>
+
+</body>
+</html>
