@@ -1,19 +1,19 @@
 <?php
-/************************************************************************************
-* Name:				Ranking Controller												*
-* File:				Application\Controller\IndexController.php 						*
-* Author(s):		Vinas de Andrade												*
-*																					*
-* Description: 		This handles URL requests related to Ranking.					*
-*																					*
-* Creation Date:	16/07/2014														*
-* Version:			1.14.0716														*
-* License:			http://www.opensource.org/licenses/bsd-license.php BSD			*
-*************************************************************************************/
+/********************************************************************************
+* Name:				Ranking Controller											*
+* File:				Application\Controller\IndexController.php 					*
+* Author(s):		Vinas de Andrade											*
+*																				*
+* Description: 		This handles URL requests related to Ranking.				*
+*																				*
+* Creation Date:	16/07/2014													*
+* Version:			1.14.0716													*
+* License:			http://www.opensource.org/licenses/bsd-license.php BSD		*
+*********************************************************************************/
 
 	namespace Application\Controller;
 
-	//use SaSeed\View;
+	use SaSeed\View;
 	use SaSeed\URLRequest;
 	use SaSeed\Session;
 
@@ -26,7 +26,7 @@
 		private $user;
 		private $serviceUser;
 		private $serviceRanking;
-		private $sessionObj;
+		private $session;
 
 		public function __construct() {
 			Session::start();
@@ -34,10 +34,10 @@
 			$this->serviceRanking	= new Ranking();
 		}
 
-		/*
-		Handle end game ranking - endGame()
-			@return format	- print
-		*/
+		/**
+		 * Handle end game event - endGame()
+		 *	@return format	- print
+		 */
 		public function endGame() {
 			$URLRequest				= new URLRequest();
 
@@ -45,53 +45,71 @@
 			$nickname				= $params['nickName'];
 			$email					= $params['email'];
 			$points					= $params['points'];
-			
-			$session = $this->getSession();
-			if (!isset($session['userId'])) {
-				$this->checkAndSaveUser($nickname, $email, $points);
-				$session = $this->setSession();
-			} else {
-				$this->user['id'] = $session['userId'];
-			}
 
-			$userMaxPoints = $this->serviceRanking->updateUserMaxPoints($session['userId'], $points);
-			$this->serviceRanking->saveGameLog($session['userId'], $points);
-			$this->rankUser($points);
+			$this->setUserSession($nickname, $email, $points);
+			$this->handleUserPoints($points);
 
 			$response['response']	= 1;
 			$response['redirect']	= '/Ranking/listRanking/';
-			$response['userId']		= $session['userId'];
+			$response['userId']		= $this->session['userId'];
 			$response['lastScore']	= $points;
 			$response['maxScore']	= $userMaxPoints;
-			echo json_encode($response);
+			View::jsonEncode($response);
 		}
 
-		/*
-		Login User from Facebook
-			@return format	- print
-		*/
+		/**
+		 * Login User from Facebook
+		 *	@return format	- print
+		 */
 		public function logInUser() {
-			$session = $this->getSession();
-			if (!isset($session['userId'])) {
+			$this->session = $this->getSession();
+			if (!isset($this->session['userId'])) {
 				$URLRequest				= new URLRequest();
 				$params 				= $URLRequest->getPostParams();
 				$nickname				= $params['nickName'];
 				$email					= $params['email'];
 				$points					= $params['points'];
 				$this->checkAndSaveUser($nickname, $email, 0);
-				$session = $this->setSession();
+				$this->session = $this->setSession();
 			}
 			$response['response'] = 1;
-			$response['maxScore'] = $this->serviceRanking->updateUserMaxPoints($session['userId'], $points);
-			$this->serviceRanking->saveGameLog($session['userId'], $points);
+			$response['maxScore'] = $this->serviceRanking
+				->updateUserMaxPoints($this->session['userId'], $points);
+			$this->serviceRanking->saveGameLog(
+				$this->session['userId'], $points
+			);
 			$this->rankUser($points);
-			echo json_encode($response);
+			View::jsonEncode($response);
 		}
 
 		public function listRanking() {
-			$this->serviceRanking = new Ranking();
 			$RankingModel = new RankingModel();
-			echo $RankingModel->listUsers($this->serviceRanking->listRanking());
+			View::printModel($RankingModel->listUsers(
+					$this->serviceRanking->listRanking()
+				)
+			);
+		}
+
+		public function renewRanking() {
+			$URLRequest = new URLRequest();
+			$params = $URLRequest->getParams();
+			$this->session = $this->getSession();
+
+$this->session['userId'] = 10;
+			
+
+			if (!empty($this->session['userId']) &&
+				$this->session['userId'] == 10 &&
+				!empty($params[0]) &&
+				$params[0] == '4560302'
+			) {
+				$this->serviceRanking->updateAllTimesRanking();
+				$this->serviceRanking->clearWeeklyRanking();
+				$response['response'] = 1;
+			} else {
+				$response['response'] = 0;
+			}
+			View::jsonEncode($response);
 		}
 
 		private function checkIsUserByEmail($email) {
@@ -105,7 +123,8 @@
 
 		private function checkAndSaveUser($nickname, $email, $points) {
 			if (!$this->checkIsUserByEmail($email)) {
-				$this->user	= $this->serviceUser->saveNewUser($nickname, $email, $points);
+				$this->user	= $this->serviceUser
+					->saveNewUser($nickname, $email, $points);
 			} else {
 				$this->user	= $this->serviceUser->getByEmail($email);
 			}
@@ -119,11 +138,29 @@
 			Session::setVar('userId', $this->user['id']);
 			return $this->getSession();
 		}
-		
+
 		private function rankUser($points = false) {
 			$smallestScore = $this->serviceRanking->getRankingSmallestScore();
 			if ($points >= $smallestScore) {
 				$this->serviceRanking->saveRanking($this->user['id'], $points);
 			}
+		}
+
+		private function setUserSession(){
+			$this->session = $this->getSession();
+			if (!isset($this->session['userId'])) {
+				$this->checkAndSaveUser($nickname, $email, $points);
+				$this->session = $this->setSession();
+			} else {
+				$this->user['id'] = $this->session['userId'];
+			}
+		}
+
+		private function handleUserPoints($points) {
+			$userMaxPoints = $this->serviceRanking
+				->updateUserMaxPoints($this->session['userId'], $points);
+			$this->serviceRanking
+				->saveGameLog($this->session['userId'], $points);
+			$this->rankUser($points);
 		}
 	}

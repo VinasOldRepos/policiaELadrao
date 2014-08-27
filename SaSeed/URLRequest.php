@@ -67,17 +67,14 @@
 			$sent_params		= false;
 			$params				= $this->getAllURLParams();
 			$tot_params			= count($params);
-			//if (ENV == 'DEV') {
+			if (ENV == 'DEV') {
+				$start			= 4;
+			} else {
 				$start			= 3;
-			/*} else {
-				$start			= 2;
-			}*/
+			}
 			for ($i = $start; $i < $tot_params; $i++) {
 				$this->params_position[]	= $params[$i];
 			}
-			echo '<pre>';
-			var_dump($this->params_position);
-			die;
 			return $this->params_position;
 		}
 

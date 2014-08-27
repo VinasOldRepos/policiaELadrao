@@ -32,6 +32,7 @@
 		private $errno				= '';		// Retorna o valor numérico da mensagem de erro da última operação sql
 		// @var boolean
 		private $is_locked			= false;	// Existe alguma tabela travada agora?
+		private $queries_count		= 0;
 
 
 		// ** CONEXãO ** \\

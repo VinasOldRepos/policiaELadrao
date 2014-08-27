@@ -16,10 +16,10 @@
 	$pathinfo	= pathinfo(dirname(__FILE__));
 	define('APP_PATH',	$pathinfo['dirname'].DIRECTORY_SEPARATOR);
 	define('VIEW_PATH',	APP_PATH.'/Application/View'.DIRECTORY_SEPARATOR);
-	define('URL_PATH',	'/questionmaster'); // DEV
+	define('URL_PATH',	'/policiaELadrao'); // DEV
 	//define('URL_PATH',	''); // LIVE
-	//define('ENV',		'DEV');
-	define('ENV',		'LIVE');
+	define('ENV',		'DEV');
+	//define('ENV',		'LIVE');
 
 	// Timezone and regional settings
 	date_default_timezone_set('America/Sao_Paulo');

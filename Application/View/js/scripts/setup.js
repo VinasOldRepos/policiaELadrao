@@ -65,15 +65,15 @@ var speedTable = new Array(
     );
 
 var images = new Array(
-        "/Application/View/img/start_over.png",
-        "/Application/View/img/guarda_fogo_02.gif",
-        "/Application/View/img/background_v2.jpg",
-        "/Application/View/img/bkg_01.jpg",
-        "/Application/View/img/bkg_02.jpg",
-        "/Application/View/img/bkg_03.jpg",
-        "/Application/View/img/bkg_04.jpg"/*,
-        "/Application/View/img/bkg_05.jpg",
-        "/Application/View/img/bkg_06.jpg"*/
+        "/policiaELadrao/Application/View/img/start_over.png",
+        "/policiaELadrao/Application/View/img/guarda_fogo_02.gif",
+        "/policiaELadrao/Application/View/img/background_v2.jpg",
+        "/policiaELadrao/Application/View/img/bkg_01.jpg",
+        "/policiaELadrao/Application/View/img/bkg_02.jpg",
+        "/policiaELadrao/Application/View/img/bkg_03.jpg",
+        "/policiaELadrao/Application/View/img/bkg_04.jpg"/*,
+        "/policiaELadrao/Application/View/img/bkg_05.jpg",
+        "/policiaELadrao/Application/View/img/bkg_06.jpg"*/
     );
 
 $.mobile.ajaxEnabled = false;

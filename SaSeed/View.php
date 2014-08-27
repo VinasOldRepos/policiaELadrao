@@ -46,12 +46,11 @@
 			@return format	- string/false
 		*/
 		private static function getRenderPath($name = false) {
-			$reutnr		= false;
 			if ($name) {
 				$name	= str_replace('_','/', $name);
-				$return	= VIEW_PATH."{$name}.html" ;
+				return VIEW_PATH."{$name}.html" ;
 			}
-			return $return;
+			return false;
 		}
 
 		/*
@@ -60,14 +59,14 @@
 			@return format	- string/false
 		*/
 		public static function renderto($name = false) {
-			$return	= false;
 			if ($name) {
 				ob_start();
 				View::render($name);
 				$return	= ob_get_contents();
 				ob_end_clean();
+				return $return;
 			}
-			return $return;
+			return false;
 		}
 
 		/*
@@ -108,4 +107,21 @@
 			return file_exists(self::getRenderPath($name));
 		}
 
+		/*
+		Prints an array encoded in Json - jsonEncode($array)
+			@param array	- data
+			@return void
+		*/
+		public static function jsonEncode($array) {
+			echo json_encode($array);
+		}
+
+		/*
+		Prints out modeled info - printModel($model)
+			@param string	- modeled info
+			@return void
+		*/
+		public static function printModel($model) {
+			echo $model;
+		}
 	}

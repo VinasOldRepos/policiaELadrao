@@ -36,21 +36,21 @@
 	}
 
 	// Define General JSs
-	$GLOBALS['general_js']	= '<script type="text/javascript" src="/Application/View/js/libs/jquery-2.1.1.min.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/jquery.mobile-1.4.2.min.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/swipeupdown.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/facebook.js"></script>'.PHP_EOL;
-	/*$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/hammer.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/libs/ion.sound.js"></script>'.PHP_EOL;*/
+	$GLOBALS['general_js']	= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/jquery-2.1.1.min.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/jquery.mobile-1.4.2.min.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/swipeupdown.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/facebook.js"></script>'.PHP_EOL;
+	/*$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/hammer.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/libs/ion.sound.js"></script>'.PHP_EOL;*/
 
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/setup.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/scripts.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/cerebro.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/movimentacao.js"></script>'.PHP_EOL;
-	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/Application/View/js/scripts/interactions.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/scripts/setup.js"></script>'.PHP_EOL;	// Se não houver, definir como vazio ''
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/scripts/scripts.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/scripts/cerebro.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/scripts/movimentacao.js"></script>'.PHP_EOL;
+	$GLOBALS['general_js']	.= '<script type="text/javascript" src="/policiaELadrao/Application/View/js/scripts/interactions.js"></script>'.PHP_EOL;
 
 	// Define General CSSs
-	$GLOBALS['general_css']	= '<link href="/Application/View/css/styles.css" rel="stylesheet">'.PHP_EOL;	// Se não houver, definir como vazio ''
+	$GLOBALS['general_css']	= '<link href="/policiaELadrao/Application/View/css/styles.css" rel="stylesheet">'.PHP_EOL;	// Se não houver, definir como vazio ''
 
 	// ********************************************** \\
 	//	Load Specific Controller and Action Function  \\
