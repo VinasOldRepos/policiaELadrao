@@ -105,17 +105,18 @@ class Ranking {
 
 	public function updateAllTimesRanking() {
 		$thisWeeks = $this->db->getAllRows_Arr('tb_ranking', '*', '1 ORDER BY int_points DESC');
-		$allTimes = $this->db->getAllRows_Arr('tb_ranking_alltimes', '*', '1 ORDER BY int_points DESC');
-		$newAllTimes = $this->buildNewAllTimesScore($thisWeeks, $allTimes);
-		$this->db->deleteRow('tb_ranking_alltimes', '1');
-		foreach ($newAllTimes as $result) {
-			$this->db->insertRow('tb_ranking_alltimes', array($result['id_user'], $result['int_points'], $result['dt_log']), '');
+		if (is_array($thisWeeks) && count($thisWeeks) > 0) {
+			$allTimes = $this->db->getAllRows_Arr('tb_ranking_alltimes', '*', '1 ORDER BY int_points DESC');
+			$newAllTimes = $this->buildNewAllTimesScore($thisWeeks, $allTimes);
+			$this->db->deleteRow('tb_ranking_alltimes', '1');
+			foreach ($newAllTimes as $result) {
+				$this->db->insertRow('tb_ranking_alltimes', array($result['id_user'], $result['int_points'], $result['dt_log']), '');
+			}
 		}
 	}
 
 	public function clearWeeklyRanking() {
-		//$this->db->deleteRow('tb_ranking', '1')
-		echo '<br>clearWeeklyRanking<br>';
+		$this->db->deleteRow('tb_ranking', '1');
 	}
 
 	private function limitTwentyRecords() {
@@ -153,6 +154,22 @@ class Ranking {
 
 	private function buildNewAllTimesScore($thisweeks, $alltimes) {
 		if (is_array($alltimes) && count($alltimes) > 0) {
+			$indexes = false;
+			// Remove repeated records
+			for ($i = 0; $i < count($alltimes); $i++) {
+				for ($idx = 0; $idx < count($thisweeks); $idx++) {
+					if ($alltimes[$i]['id_user'] == $thisweeks[$idx]['id_user'] &&
+						$alltimes[$i]['int_points'] >= $thisweeks[$idx]['int_points']
+					) {
+						$indexes[] = $idx;
+					}
+				}
+			}
+			if ($indexes) {
+				for ($i = 0; $i < count($indexes); $i++) { 
+					unset($thisweeks[$indexes[$i]]);
+				}
+			}
 			$allresults = array_merge($thisweeks, $alltimes);
 		} else {
 			$allresults = $thisweeks;
