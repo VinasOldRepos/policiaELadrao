@@ -33,8 +33,15 @@ working with it, you'll need to set up a few simples things.
           PRIMARY KEY (`id`)
         ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
         CREATE TABLE IF NOT EXISTS `tb_ranking` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          `id_user` int(11) NOT NULL,
+          `int_points` int(11) NOT NULL,
+          `dt_log` datetime NOT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+        CREATE TABLE IF NOT EXISTS `tb_ranking_alltimes` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `id_user` int(11) NOT NULL,
           `int_points` int(11) NOT NULL,
