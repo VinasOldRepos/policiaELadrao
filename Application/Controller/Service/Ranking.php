@@ -119,6 +119,19 @@ class Ranking {
 		$this->db->deleteRow('tb_ranking', '1');
 	}
 
+	public function getUserRankByUserId($userId) {
+		return $this->db->getRow('tb_ranking', '*', 'id_user = '.$userId);
+	}
+
+	public function deleteRankingPositionByUserId($userId) {
+		return $this->db->deleteRow('tb_ranking', 'id_user = '.$userId);
+	}
+
+	public function updateUserRank($userId, $points) {
+		$this->deleteRankingPositionByUserId($userId);
+		$this->saveRanking($userId, $points);
+	}
+
 	private function limitTwentyRecords() {
 		$ranking	= $this->db->getAllRows_Arr('tb_ranking', 'id', '1 ORDER BY int_points DESC');
 		$total		= count($ranking);

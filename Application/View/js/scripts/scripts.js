@@ -203,8 +203,8 @@ $(document).on("ready", function() {
         nickName = $("#nickname").val();
         email = $("#email").val();
         points = $("#gamePoints").val();
-        if ((nickName) && (email) && (points)) {
-            $.post('/Ranking/endGame/', {
+        //if ((nickName) && (email) && (points)) {
+            $.post('/policiaELadrao/Ranking/endGame/', {
                 nickName: nickName,
                 email: email,
                 points: points
@@ -230,7 +230,7 @@ $(document).on("ready", function() {
                 document.body.style.cursor = 'default';
                 return false;
             });
-        }
+        //}
     }
 
     $.startPressedTimmer = function(button) {
@@ -339,7 +339,7 @@ $(document).on("ready", function() {
         //$("#formRanking").hide();
         $("#busted").hide();
         $("#timeUp").hide();
-        $.post("/Ranking/listRanking", {}, function(rankingList) {
+        $.post("/policiaELadrao/Ranking/listRanking", {}, function(rankingList) {
             $("#lista").html(rankingList);
             $("#ranking").show();
         });
