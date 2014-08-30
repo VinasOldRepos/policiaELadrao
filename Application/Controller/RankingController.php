@@ -46,12 +46,12 @@ class RankingController {
 		$email					= $params['email'];
 		$points					= $params['points'];
 
-		//$this->setUserSession('Vinas', 'vinas.andrade@gmail.com', 666);
-		$this->setUserSession($nickname, $email, $points);
+		$this->setUserSession('Vinas', 'vinas.andrade@gmail.com', 666);
+		//$this->setUserSession($nickname, $email, $points);
 		$userMaxPoints = $this->handleUserPoints($points);
 
 		$response['response']	= 1;
-		$response['redirect']	= '/policiaELadrao/Ranking/listRanking/';
+		$response['redirect']	= '/policiaELadrao/Ranking/listWeeklyRanking/';
 		$response['userId']		= $this->session['userId'];
 		$response['lastScore']	= $points;
 		$response['maxScore']	= $userMaxPoints;
@@ -83,10 +83,20 @@ class RankingController {
 		View::jsonEncode($response);
 	}
 
-	public function listRanking() {
+	public function listWeeklyRanking() {
 		$RankingModel = new RankingModel();
-		View::printModel($RankingModel->listUsers(
-				$this->serviceRanking->listRanking()
+		View::printModel($RankingModel->ranking(
+				$this->serviceRanking->listWeeklyRanking(),
+				true
+			)
+		);
+	}
+
+	public function listAllTimesRanking() {
+		$RankingModel = new RankingModel();
+		View::printModel($RankingModel->ranking(
+				$this->serviceRanking->listAllTimesRanking(),
+				false
 			)
 		);
 	}

@@ -176,7 +176,7 @@ $(document).on("ready", function() {
     $.fimDeJogo = function(motivo) {
         $("#gamePoints").val($("#pontos").html());
         $.postRankingForm();
-        $(".buttonRanking").show();
+        $(".buttonWeeklyRanking").show();
         if (motivo == "busted") {
             $.busted();
         } else if (motivo == "timeUp") {
@@ -219,11 +219,9 @@ $(document).on("ready", function() {
                     $("#loginStatus").html(
                         'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score: ' + $("#maxScore").val()
                     );
-    				$.post(res.redirect, {}, function(rankingList) {
-    					$("#userId").val(res.userId);
-    					$("#lista").html(rankingList);
-    					//$("#ranking").show();
-    				});
+                    $.post(res.redirect, {}, function(ranking) {
+                        $("#ranking").html(ranking);
+                    });
                 } else {
                     alert("Sorry,\n\nThere was an error.\n\nError: "+res.erro);
                 }
@@ -334,15 +332,30 @@ $(document).on("ready", function() {
         $.postRankingForm();
     });
 
-    $(".buttonRanking").on("tap", function() {
+    $(".buttonWeeklyRanking").on("tap", function() {
         $(this).hide();
         //$("#formRanking").hide();
         $("#busted").hide();
         $("#timeUp").hide();
-        $.post("/policiaELadrao/Ranking/listRanking", {}, function(rankingList) {
-            $("#lista").html(rankingList);
+        /*$.post("/policiaELadrao/Ranking/listWeeklyRanking", {}, function(ranking) {
+            $("#ranking").html(ranking);
             $("#ranking").show();
-        });
+        });*/
+        $("#ranking").show();
+    });
+
+    $("#rankingLinkButton").on("tap", function() {
+        console.log('aqui');
+        /*type = $(this).attr("data-rankingType");
+        if (type == "thisweeks") {
+            rankingType = "listWeeklyRanking";
+        } else if (type == "alltimes") {
+            rankingType = "listAllTimesRanking";
+        }
+        $.post("/policiaELadrao/Ranking/" + rankingType, {}, function(ranking) {
+            $("#ranking").html(ranking);
+            $("#ranking").show();
+        });*/
     });
 
     /* ******************************* */

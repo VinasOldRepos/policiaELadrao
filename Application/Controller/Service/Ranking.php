@@ -53,7 +53,7 @@ class Ranking {
 	*/
 	public function saveRanking($userId, $points) {
 		if (($userId) && ($points)) {
-			if ($this->countRanking() >= 15) {
+			if ($this->countRanking() >= 13) {
 				$this->deleteRankingSmallestScore();
 			}
 			if ($this->db->insertRow(
@@ -95,11 +95,19 @@ class Ranking {
 		return $user['int_max_points'];
 	}
 
-	public function listRanking() {
+	public function listWeeklyRanking() {
 		return $this->db->getAllRows_Arr(
 			'tb_ranking AS r JOIN tb_user AS u ON r.id_user = u.id',
 			'r.id, u.str_nickname, r.int_points',
-			'1 ORDER BY int_points DESC LIMIT 15'
+			'1 ORDER BY int_points DESC LIMIT 13'
+		);
+	}
+
+	public function listAllTimesRanking() {
+		return $this->db->getAllRows_Arr(
+			'tb_ranking_alltimes AS r JOIN tb_user AS u ON r.id_user = u.id',
+			'r.id, u.str_nickname, r.int_points',
+			'1 ORDER BY int_points DESC LIMIT 13'
 		);
 	}
 
@@ -132,12 +140,12 @@ class Ranking {
 		$this->saveRanking($userId, $points);
 	}
 
-	private function limitTwentyRecords() {
+	private function limitRankingRecords() {
 		$ranking	= $this->db->getAllRows_Arr('tb_ranking', 'id', '1 ORDER BY int_points DESC');
 		$total		= count($ranking);
-		if ($total > 15) {
+		if ($total > 13) {
 			$ids = false;
-			for ($i = 15; $i < $total; $i++) {
+			for ($i = 13; $i < $total; $i++) {
 				if ($ids) {
 					$ids .= ', '.$ranking[$i]['id'];
 				} else {
@@ -145,7 +153,7 @@ class Ranking {
 				}
 			}
 			if ($this->db->deleteRow('tb_ranking', 'id NOT IN ('.$ids.')')) {
-				return 15;
+				return 13;
 			}
 		}
 		return $total;
@@ -194,10 +202,10 @@ class Ranking {
 
 	private function limitarRankingResults($allresults) {
 		$total = count($allresults);
-		if ($total > 15) {
-			$dif = $total - 15;
+		if ($total > 13) {
+			$dif = $total - 13;
 			for ($i = 0; $i < $dif; $i++) {
-				unset($allresults[14+$i]);
+				unset($allresults[12+$i]);
 			}
 		}
 		return $allresults;
