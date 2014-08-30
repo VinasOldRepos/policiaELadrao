@@ -51,7 +51,7 @@ class RankingController {
 		$userMaxPoints = $this->handleUserPoints($points);
 
 		$response['response']	= 1;
-		$response['redirect']	= '/policiaELadrao/Ranking/listWeeklyRanking/';
+		$response['redirect']	= '/Ranking/listWeeklyRanking/';
 		$response['userId']		= $this->session['userId'];
 		$response['lastScore']	= $points;
 		$response['maxScore']	= $userMaxPoints;
@@ -85,20 +85,24 @@ class RankingController {
 
 	public function listWeeklyRanking() {
 		$RankingModel = new RankingModel();
-		View::printModel($RankingModel->ranking(
+		$return['thisRanking'] = $RankingModel->ranking(
 				$this->serviceRanking->listWeeklyRanking(),
 				true
-			)
-		);
+			);
+		$return['otherRankingLink'] = "alltimes";
+		$return['linkCaption'] = "CHECK ALL TIMES RANKING";
+		View::jsonEncode($return);
 	}
 
 	public function listAllTimesRanking() {
 		$RankingModel = new RankingModel();
-		View::printModel($RankingModel->ranking(
+		$return['thisRanking'] = $RankingModel->ranking(
 				$this->serviceRanking->listAllTimesRanking(),
 				false
-			)
-		);
+			);
+		$return['otherRankingLink'] = "thisweeks";
+		$return['linkCaption'] = "CHECK THIS WEEK'S RANKING";
+		View::jsonEncode($return);
 	}
 
 	public function renewRanking() {

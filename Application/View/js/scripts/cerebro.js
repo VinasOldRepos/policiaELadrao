@@ -99,7 +99,7 @@ $('document').ready(function() {
         fundos[3] = "bkg_04.jpg";
         fundos[4] = "background_v2.jpg";
 
-        while (fundo.css("background-image") == "url(/policiaELadrao/Application/View/img/"+fundos[rand]+")") {
+        while (fundo.css("background-image") == "url(/Application/View/img/"+fundos[rand]+")") {
             rand = Math.floor(Math.random() * 4);
         }
 
@@ -137,10 +137,10 @@ $('document').ready(function() {
             }
         }
         if (tempoMolotov == 0) {
-            $("#policiaImagem").attr("src", "/policiaELadrao/Application/View/img/guarda.gif");
+            $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
             $("#contador").hide();
             if (faseAtual >= FASEDOISPOLICIAS) {
-                $("#policiaImagem2").attr("src", "/policiaELadrao/Application/View/img/guarda.gif");
+                $("#policiaImagem2").attr("src", "/Application/View/img/guarda.gif");
                 $("#contador2").hide();
             }
         }

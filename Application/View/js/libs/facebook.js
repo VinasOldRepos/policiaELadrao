@@ -76,7 +76,7 @@
 
         $("#nickname").val(response.first_name);
         $("#email").val(response.email);
-        $.post('/policiaELadrao/Ranking/logInUser/', {
+        $.post('/Ranking/logInUser/', {
               nickName: response.first_name,
               email: response.email,
               points: $("#gamePoints").val()

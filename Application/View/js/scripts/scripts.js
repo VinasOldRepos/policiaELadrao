@@ -16,7 +16,7 @@ $(document).on("ready", function() {
         sounds: [
             "heehee"
         ],
-        path: "/policiaELadrao/Application/View/audio/",
+        path: "/Application/View/audio/",
         multiPlay: true,
         volume: "1.0"
     });*/
@@ -76,8 +76,8 @@ $(document).on("ready", function() {
 
     $.displayGameInfo = function() {
         $("#pontos").html("0");
-        $("#l_fundo").css("background-image", "url(/policiaELadrao/Application/View/img/background_v2.jpg)");
-        $("#policiaImagem").attr("src", "/policiaELadrao/Application/View/img/guarda.gif");
+        $("#l_fundo").css("background-image", "url(/Application/View/img/background_v2.jpg)");
+        $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
         $("#actionLegenda").html('');
         $("#fase").html(faseAtual);
         $("#tempo").html(tempo);
@@ -92,6 +92,7 @@ $(document).on("ready", function() {
     $.hideAllHideble = function() {
         $("#instructionsBar").hide();
         $("#ranking").hide();
+        $("#rankingFooter").hide();
         $("#formRanking").hide();
         $("#presentation").hide();
         $("#relogio").hide();
@@ -204,7 +205,7 @@ $(document).on("ready", function() {
         email = $("#email").val();
         points = $("#gamePoints").val();
         //if ((nickName) && (email) && (points)) {
-            $.post('/policiaELadrao/Ranking/endGame/', {
+            $.post('/Ranking/endGame/', {
                 nickName: nickName,
                 email: email,
                 points: points
@@ -220,7 +221,10 @@ $(document).on("ready", function() {
                         'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score: ' + $("#maxScore").val()
                     );
                     $.post(res.redirect, {}, function(ranking) {
-                        $("#ranking").html(ranking);
+                        ranking = $.parseJSON(ranking);
+                        $("#ranking").html(ranking.thisRanking);
+                        $("#rankingFooter").attr("data-rankingType", ranking.otherRankingLink);
+                        $("#rankingLinkButton").html(ranking.linkCaption);
                     });
                 } else {
                     alert("Sorry,\n\nThere was an error.\n\nError: "+res.erro);
@@ -232,9 +236,9 @@ $(document).on("ready", function() {
     }
 
     $.startPressedTimmer = function(button) {
-        button.attr("src", "/policiaELadrao/Application/View/img/start_over.png");
+        button.attr("src", "/Application/View/img/start_over.png");
         setTimeout(function() {
-           button.attr("src", "/policiaELadrao/Application/View/img/start.png");
+           button.attr("src", "/Application/View/img/start.png");
         }, 300);
     }
 
@@ -276,7 +280,7 @@ $(document).on("ready", function() {
         if (justOpened.val() == 1) {
             $("#presentation").css(
                 "background-image",
-                "url('/policiaELadrao/Application/View/img/detalhes.gif')"
+                "url('/Application/View/img/detalhes.gif')"
             );
             justOpened.val(0);
         } else {
@@ -337,25 +341,27 @@ $(document).on("ready", function() {
         //$("#formRanking").hide();
         $("#busted").hide();
         $("#timeUp").hide();
-        /*$.post("/policiaELadrao/Ranking/listWeeklyRanking", {}, function(ranking) {
+        /*$.post("/Ranking/listWeeklyRanking", {}, function(ranking) {
             $("#ranking").html(ranking);
             $("#ranking").show();
         });*/
         $("#ranking").show();
+        $("#rankingFooter").show();
     });
 
     $("#rankingLinkButton").on("tap", function() {
-        console.log('aqui');
-        /*type = $(this).attr("data-rankingType");
+        type = $(this).attr("data-rankingType");
         if (type == "thisweeks") {
             rankingType = "listWeeklyRanking";
         } else if (type == "alltimes") {
             rankingType = "listAllTimesRanking";
         }
-        $.post("/policiaELadrao/Ranking/" + rankingType, {}, function(ranking) {
-            $("#ranking").html(ranking);
-            $("#ranking").show();
-        });*/
+        $.post("/Ranking/" + rankingType, {}, function(ranking) {
+            ranking = $.parseJSON(ranking);
+            $("#ranking").html(ranking.thisRanking);
+            $("#rankingLinkButton").attr("data-rankingType", ranking.otherRankingLink);
+            $("#rankingLinkButton").html(ranking.linkCaption);
+        });
     });
 
     /* ******************************* */
