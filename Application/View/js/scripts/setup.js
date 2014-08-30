@@ -65,6 +65,7 @@ var speedTable = new Array(
     );
 
 var images = new Array(
+        "/Application/View/img/detalhes.gif",
         "/Application/View/img/start_over.png",
         "/Application/View/img/guarda_fogo_02.gif",
         "/Application/View/img/background_v2.jpg",
