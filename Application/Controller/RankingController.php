@@ -43,11 +43,12 @@ class RankingController {
 
 		$params 				= $URLRequest->getPostParams();
 		$nickname				= $params['nickName'];
+		$lastname 				= $params['lastName'];
 		$email					= $params['email'];
 		$points					= $params['points'];
 
-		$this->setUserSession('Vinas', 'vinas.andrade@gmail.com', 666);
-		//$this->setUserSession($nickname, $email, $points);
+		//$this->setUserSession('Vinas', 'de Andrade', 'vinas.andrade@gmail.com', 666);
+		$this->setUserSession($nickname, $email, $lastname, $points);
 		$userMaxPoints = $this->handleUserPoints($points);
 
 		$response['response']	= 1;
@@ -68,9 +69,10 @@ class RankingController {
 			$URLRequest				= new URLRequest();
 			$params 				= $URLRequest->getPostParams();
 			$nickname				= $params['nickName'];
+			$lastname				= $params['lastName'];
 			$email					= $params['email'];
 			$points					= $params['points'];
-			$this->checkAndSaveUser($nickname, $email, 0);
+			$this->checkAndSaveUser($nickname, $lastname, $email, 0);
 			$this->session = $this->setSession();
 		}
 		$response['response'] = 1;
@@ -112,7 +114,7 @@ class RankingController {
 
 
 // Mock teste dev
-$this->session['userId'] = 10;
+//$this->session['userId'] = 10;
 
 
 		if (!empty($this->session['userId']) &&
@@ -138,10 +140,10 @@ $this->session['userId'] = 10;
 		return false;
 	}
 
-	private function checkAndSaveUser($nickname, $email, $points) {
+	private function checkAndSaveUser($nickname, $lastname, $email, $points) {
 		if (!$this->checkIsUserByEmail($email)) {
 			$this->user	= $this->serviceUser
-				->saveNewUser($nickname, $email, $points);
+				->saveNewUser($nickname, $lastname, $email, $points);
 		} else {
 			$this->user	= $this->serviceUser->getByEmail($email);
 		}
@@ -156,10 +158,10 @@ $this->session['userId'] = 10;
 		return $this->getSession();
 	}
 
-	private function setUserSession($nickname, $email, $points){
+	private function setUserSession($nickname, $lastname, $email, $points){
 		$this->session = $this->getSession();
 		if (!isset($this->session['userId'])) {
-			$this->checkAndSaveUser($nickname, $email, $points);
+			$this->checkAndSaveUser($nickname, $lastname, $email, $points);
 			$this->session = $this->setSession();
 		} else {
 			$this->user['id'] = $this->session['userId'];

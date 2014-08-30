@@ -73,11 +73,12 @@
       //console.log('Successful login for: ' + response.name);
       document.getElementById('loginStatus').innerHTML =
         'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score:' + $("#maxScore").val();
-
         $("#nickname").val(response.first_name);
+        $("#lastname").val(response.last_name);
         $("#email").val(response.email);
         $.post('/Ranking/logInUser/', {
               nickName: response.first_name,
+              lastName: response.last_name,
               email: response.email,
               points: $("#gamePoints").val()
             },

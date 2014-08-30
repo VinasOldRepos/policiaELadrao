@@ -50,14 +50,15 @@
 		}
 
 		/*
-		Save user in the database - saveNewUser($nickname, $email, $points)
+		Save user in the database - saveNewUser($nickname, $lastname, $email, $points)
 			@param string	- User's nickname
+			@param string	- User's last name
 			@param string	- User's email
 			@return array
 		*/
-		public function saveNewUser($nickname, $email, $points = 0) {
+		public function saveNewUser($nickname, $lastname, $email, $points = 0) {
 			if (($nickname) && ($email)) {
-				if ($this->db->insertRow($this->table, array($nickname, $email, $points), '')) {
+				if ($this->db->insertRow($this->table, array($nickname, $lastname, $email, $points), '')) {
 					return $this->getById($this->db->last_id());
 				}
 			}

@@ -52,13 +52,11 @@ working with it, you'll need to set up a few simples things.
         CREATE TABLE IF NOT EXISTS `tb_user` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `str_nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+          `str_lastname` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
           `str_email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
           `int_max_points` int(11) NOT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-4 - Set the database name and connection settings at: /SaSeed/Config/database.in
-        (Attention to the environment ;) )
 
 
 Well, I guess this is pretty much it.

@@ -202,11 +202,13 @@ $(document).on("ready", function() {
 
     $.postRankingForm = function() {
         nickName = $("#nickname").val();
+        lastName = $("#lastname").val();
         email = $("#email").val();
         points = $("#gamePoints").val();
         //if ((nickName) && (email) && (points)) {
             $.post('/Ranking/endGame/', {
                 nickName: nickName,
+                lastName: lastName,
                 email: email,
                 points: points
             }, function(res) {

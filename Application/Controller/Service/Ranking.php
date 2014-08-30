@@ -98,7 +98,7 @@ class Ranking {
 	public function listWeeklyRanking() {
 		return $this->db->getAllRows_Arr(
 			'tb_ranking AS r JOIN tb_user AS u ON r.id_user = u.id',
-			'r.id, u.str_nickname, r.int_points',
+			'r.id, u.str_nickname, u.str_lastname, r.int_points',
 			'1 ORDER BY int_points DESC LIMIT 13'
 		);
 	}
@@ -106,7 +106,7 @@ class Ranking {
 	public function listAllTimesRanking() {
 		return $this->db->getAllRows_Arr(
 			'tb_ranking_alltimes AS r JOIN tb_user AS u ON r.id_user = u.id',
-			'r.id, u.str_nickname, r.int_points',
+			'r.id, u.str_nickname, u.str_lastname, r.int_points',
 			'1 ORDER BY int_points DESC LIMIT 13'
 		);
 	}

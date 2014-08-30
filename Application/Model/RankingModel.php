@@ -28,7 +28,7 @@ class RankingModel {
 		$return			= '';
 		for ($i = 0; $i < count($entries); $i++) {
 			$return		.= '		<div class="linha">'.PHP_EOL;
-			$return		.= '			<div class="nome">'.($i + 1).'. '.$entries[$i]['str_nickname'].'</div>'.PHP_EOL;
+			$return		.= '			<div class="nome">'.($i + 1).'. '.$entries[$i]['str_nickname'].' '.$entries[$i]['str_lastname'].'</div>'.PHP_EOL;
 			$return		.= '			<div class="pontuacao">'.$entries[$i]['int_points'].'</div>'.PHP_EOL;
 			$return		.= '		</div>'.PHP_EOL;
 		}
