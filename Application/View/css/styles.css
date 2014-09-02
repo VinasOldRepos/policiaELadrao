@@ -1,11 +1,11 @@
 @font-face {
     font-family: BitParty;
-    src: url('/Application/View/font/8_bit_party.ttf');
+    src: url('//Application/View/font/8_bit_party.ttf');
 }
 
 @font-face {
     font-family: BitOperator;
-    src: url('/Application/View/font/8bitoperator.ttf');
+    src: url('//Application/View/font/8bitoperator.ttf');
 }
 
 
@@ -23,7 +23,7 @@ body {
 	width: 500;
 	height: 500;
 	background-color: #000000;
-	background-image: url('/Application/View/img/background_v2.jpg');
+	background-image: url('//Application/View/img/background_v2.jpg');
 	background-repeat: repeat;
 	color: #FFFFFF;
 	transition: background-image 0.3s ease;
@@ -31,7 +31,7 @@ body {
 
 .backgroundTap {
 	position: absolute;
-	background-image: url('/Application/View/img/arrow_up_02.png');
+	background-image: url('//Application/View/img/arrow_up_02.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	display: none;
@@ -46,7 +46,7 @@ body {
 	background-color: #FFFFFF;
 	color: #000000;
 	display: block;
-	background-image: url('/Application/View/img/title.png');
+	background-image: url('//Application/View/img/title.png');
 }
 
 .animation {
@@ -418,4 +418,8 @@ body {
 	cursor: pointer;
 	/*background-color: #575757;
 	color: #000;*/
+}
+
+#resetGame {
+	display: none;
 }

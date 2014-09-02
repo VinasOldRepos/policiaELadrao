@@ -31,9 +31,9 @@ $('document').ready(function() {
             tempoMolotov = PAUSAMOLOTOV;
             $.ganhaPontos();
             $("#molotov").hide();
-            $("#policiaImagem").attr("src", "/Application/View/img/guarda_fogo_02.gif");
+            $("#policiaImagem").attr("src", "//Application/View/img/guarda_fogo_02.gif");
             if (faseAtual >= FASEDOISPOLICIAS) {
-                $("#policiaImagem2").attr("src", "/Application/View/img/guarda_fogo_02.gif");
+                $("#policiaImagem2").attr("src", "//Application/View/img/guarda_fogo_02.gif");
             }
             molotovVis = false;
             $.feedBackMolotov();
@@ -217,7 +217,7 @@ $('document').ready(function() {
     $.mudaBackground = function() {
         $("#l_fundo").css(
             "background-image",
-            "url(/Application/View/img/"+$.sorteiaFundo()+")"
+            "url(//Application/View/img/"+$.sorteiaFundo()+")"
         );
     }
 

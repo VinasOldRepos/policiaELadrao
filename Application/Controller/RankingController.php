@@ -47,8 +47,8 @@ class RankingController {
 		$email					= $params['email'];
 		$points					= $params['points'];
 
-		//$this->setUserSession('Vinas', 'de Andrade', 'vinas.andrade@gmail.com', 666);
-		$this->setUserSession($nickname, $email, $lastname, $points);
+		$this->setUserSession('Vinas', 'de Andrade', 'vinas.andrade@gmail.com', 666);
+		//$this->setUserSession($nickname, $email, $lastname, $points);
 		$userMaxPoints = $this->handleUserPoints($points);
 
 		$response['response']	= 1;
@@ -114,7 +114,7 @@ class RankingController {
 
 
 // Mock teste dev
-//$this->session['userId'] = 10;
+$this->session['userId'] = 10;
 
 
 		if (!empty($this->session['userId']) &&
