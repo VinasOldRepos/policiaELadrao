@@ -16,7 +16,7 @@ $(document).on("ready", function() {
         sounds: [
             "heehee"
         ],
-        path: "//Application/View/audio/",
+        path: "/Application/View/audio/",
         multiPlay: true,
         volume: "1.0"
     });*/
@@ -76,8 +76,8 @@ $(document).on("ready", function() {
 
     $.displayGameInfo = function() {
         $("#pontos").html("0");
-        $("#l_fundo").css("background-image", "url(//Application/View/img/background_v2.jpg)");
-        $("#policiaImagem").attr("src", "//Application/View/img/guarda.gif");
+        $("#l_fundo").css("background-image", "url(/Application/View/img/background_v2.jpg)");
+        $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
         $("#actionLegenda").html('');
         $("#fase").html(faseAtual);
         $("#tempo").html(tempo);
@@ -238,9 +238,9 @@ $(document).on("ready", function() {
     }
 
     $.startPressedTimmer = function(button) {
-        button.attr("src", "//Application/View/img/start_over.png");
+        button.attr("src", "/Application/View/img/start_over.png");
         setTimeout(function() {
-           button.attr("src", "//Application/View/img/start.png");
+           button.attr("src", "/Application/View/img/start.png");
         }, 300);
     }
 
@@ -288,7 +288,7 @@ $(document).on("ready", function() {
         if (justOpened.val() == 1) {
             $("#presentation").css(
                 "background-image",
-                "url('//Application/View/img/detalhes.gif')"
+                "url('/Application/View/img/detalhes.gif')"
             );
             justOpened.val(0);
         } else {
@@ -373,7 +373,7 @@ $(document).on("ready", function() {
     });
 
     /* ******************************* */
-    $.loading();
+    setTimeout(function() { $.loading() }, 3500);
 
     $.gameLoop();
     $.gameClock();

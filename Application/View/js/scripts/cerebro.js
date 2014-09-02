@@ -90,11 +90,10 @@ $('document').ready(function() {
 
     $.sorteiaFundo = function() {
         var rand = Math.floor(Math.random() * backgrounds.length);
-        while ($("#l_fundo").css("background-image") == "url(//Application/View/img/"+backgrounds[rand]+")") {
+        while ($("#l_fundo").css("background-image") == "url(/Application/View/img/"+backgrounds[rand]+")") {
             rand = Math.floor(Math.random() * backgrounds.length);
         }
-
-        return fundos[rand];
+        return backgrounds[rand];
     }
 
     $.sortMolotov = function() {
@@ -128,10 +127,10 @@ $('document').ready(function() {
             }
         }
         if (tempoMolotov == 0) {
-            $("#policiaImagem").attr("src", "//Application/View/img/guarda.gif");
+            $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
             $("#contador").hide();
             if (faseAtual >= FASEDOISPOLICIAS) {
-                $("#policiaImagem2").attr("src", "//Application/View/img/guarda.gif");
+                $("#policiaImagem2").attr("src", "/Application/View/img/guarda.gif");
                 $("#contador2").hide();
             }
         }

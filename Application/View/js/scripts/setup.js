@@ -65,23 +65,23 @@ var speedTable = new Array(
     );
 
 var preloadImages = new Array(
-        "//Application/View/img/detalhes.gif",
-        "//Application/View/img/start_over.png",
-        "//Application/View/img/guarda_fogo_02.gif",
-        "//Application/View/img/background_01.jpg",
-        "//Application/View/img/background_v2.jpg",
-        "//Application/View/img/bkg_01.jpg",
-        "//Application/View/img/bkg_02.jpg",
-        "//Application/View/img/bkg_03.jpg",
-        "//Application/View/img/bkg_04.jpg",
-        "//Application/View/img/bkg_05.jpg",
-        "//Application/View/img/bkg_06.jpg",
-        "//Application/View/img/busted.png",
-        "//Application/View/img/timeisup_01.png",
-        "//Application/View/img/start.png",
-        "//Application/View/img/molotov_v2.png",
-        "//Application/View/img/money2.png",
-        "//Application/View/img/bomb_v2.png"
+        "/Application/View/img/detalhes.gif",
+        "/Application/View/img/start_over.png",
+        "/Application/View/img/guarda_fogo_02.gif",
+        "/Application/View/img/background_01.jpg",
+        "/Application/View/img/background_v2.jpg",
+        "/Application/View/img/bkg_01.jpg",
+        "/Application/View/img/bkg_02.jpg",
+        "/Application/View/img/bkg_03.jpg",
+        "/Application/View/img/bkg_04.jpg",
+        "/Application/View/img/bkg_05.jpg",
+        "/Application/View/img/bkg_06.jpg",
+        "/Application/View/img/busted.png",
+        "/Application/View/img/timeisup_01.png",
+        "/Application/View/img/start.png",
+        "/Application/View/img/molotov_v2.png",
+        "/Application/View/img/money2.png",
+        "/Application/View/img/bomb_v2.png"
     );
 
 var backgrounds = new Array(
