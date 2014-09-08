@@ -372,9 +372,16 @@ $(document).on("ready", function() {
         });
     });
 
+    $(".facebookLoginButton").on("click", function() {
+        if (!$("#logged").val()) {
+            fb_login();
+        }
+    });
+
     /* ******************************* */
     setTimeout(function() { $.loading() }, 3500);
 
     $.gameLoop();
     $.gameClock();
+
 });

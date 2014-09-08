@@ -8,7 +8,7 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      fbapi();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('loginStatus').innerHTML = '&nbsp;&nbsp;&nbsp;Please log into this app.';
@@ -29,29 +29,29 @@
   }
 
   window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '725598060832930',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.0' // use version 2.0
-  });
+    FB.init({
+      appId      : '725598060832930',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.0' // use version 2.0
+    });
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
+    // Now that we've initialized the JavaScript SDK, we call 
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
 
   };
 
@@ -64,32 +64,45 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    //console.log('Welcome!  Fetching your information.... ');
+  function fb_login(){
+      FB.login(function(response) {
+
+          if (response.authResponse) {
+              console.log('Welcome!  Fetching your information.... ');
+              //console.log(response); // dump complete info
+              access_token = response.authResponse.accessToken; //get access token
+              user_id = response.authResponse.userID; //get FB UID
+              fbapi();
+          }
+      }, {
+          scope: 'publish_stream,email'
+      });
+  }
+
+  function fbapi() {
     FB.api('/me', function(response) {
-      $("#facebookLoginButton").hide();
-      //console.log('Successful login for: ' + response.name);
-      document.getElementById('loginStatus').innerHTML =
-        'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score:' + $("#maxScore").val();
+        //$("#facebookLoginButton").hide();
+        document.getElementById('loginStatus').innerHTML =
+            'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score:' + $("#maxScore").val();
         $("#nickname").val(response.first_name);
         $("#lastname").val(response.last_name);
         $("#email").val(response.email);
+        $("#logged").val(true);
+        $("#facebookLoginButton").css("background-color", "#4365BC");
+        $("#facebookLoginButton").html('<div style="font-size: 19px; padding-left: 10px; padding-top: 15px;">'+response.first_name+'</div>');
         $.post('/Ranking/logInUser/', {
-              nickName: response.first_name,
-              lastName: response.last_name,
-              email: response.email,
-              points: $("#gamePoints").val()
-            },
+            nickName: response.first_name,
+            lastName: response.last_name,
+            email: response.email,
+            points: $("#gamePoints").val() },
             function(res) {
-              res = $.parseJSON(res);
-              if (res.response == 1) {
-                $("#maxScore").val(res.maxScore);
-                $("#loginStatus").html(
-                    'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score: ' + $("#maxScore").val()
-                );
-              }
+                res = $.parseJSON(res);
+                if (res.response == 1) {
+                    $("#maxScore").val(res.maxScore);
+                    $("#loginStatus").html(
+                        'last score: ' + $("#gamePoints").val() + '&nbsp;&nbsp;-&nbsp;&nbsp;best score: ' + $("#maxScore").val()
+                    );
+                }
             }
         );
     });

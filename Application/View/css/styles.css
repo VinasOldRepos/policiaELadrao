@@ -390,8 +390,15 @@ body {
 .facebookLoginButton {
 	position: absolute;
 	float: left;
-	top: 423px;
-	left: 94px;
+	top: 407px;
+	left: 65px;
+	width: 180px;
+	height: 55px;
+	font-size: 18px;
+}
+
+.facebookLoginButton:hover {
+	cursor: pointer;
 }
 
 #loginStatus {

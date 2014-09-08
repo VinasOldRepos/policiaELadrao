@@ -48,13 +48,12 @@
 </div>
 
 <div id="busted" class="busted">
-    <img src="/Application/View/img/busted.png" width="500" height="500" alt="You got busted!" />
+    <img src="/Application/View/img/busted_v2.png" width="500" height="500" alt="You got busted!" />
     <div id="loginStatus">
     </div>
     <div class="facebookLoginButton" id="facebookLoginButton">
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     </div>
-    <div class="buttonWeeklyRanking">THIS WEEK'S<br />RANKING</div>
+    <div class="buttonWeeklyRanking"></div>
 </div>
 
 <div id="timeUp" class="timeUp">
@@ -62,9 +61,8 @@
     <div id="loginStatus">
     </div>
     <div class="facebookLoginButton" id="facebookLoginButton">
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     </div>
-    <div class="buttonWeeklyRanking">RANKING</div>
+    <div class="buttonWeeklyRanking"></div>
 </div>
 
 <div id="formRanking" class="formRanking">
@@ -72,6 +70,7 @@
     <input type="hidden" name="nickname" id="nickname" value="" />
     <input type="hidden" name="lastname" id="lastname" value="" />
     <input type="hidden" name="email" id="email" value="" />
+    <input type="hidden" name="logged" id="logged" val="" />
     <!--div class="nickname">Nickname: <input type="text" name="nickname" id="nickname" class="textField" /></div>
     <div class="email">Email: <input type="text" name="email" id="email" class="textField" /></div>
 	<img id="btOk" class="btOk" src="/Application/View/img/bt_ok_01.gif" width="50" height="50" alt="OK" />
