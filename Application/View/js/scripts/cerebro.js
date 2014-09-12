@@ -80,17 +80,17 @@ $('document').ready(function() {
 
 	// Função que faz o cross-border
     $.ajustaLimite = function(posicao) {
-        if (posicao > (TAMANHOMAPA - TAMANHOOBJETO)) {
+        if (posicao > (mapSize - TAMANHOOBJETO)) {
 			posicao = -CROSSBORDERTOLERANCE;
 		} else if (posicao <= (-TAMANHOOBJETO + CROSSBORDERTOLERANCE)) {
-			posicao = posicao + (TAMANHOMAPA - CROSSBORDERTOLERANCE);
+			posicao = posicao + (mapSize - CROSSBORDERTOLERANCE);
 		}
 		return posicao;
     };
 
     $.sorteiaFundo = function() {
         var rand = Math.floor(Math.random() * backgrounds.length);
-        while ($("#l_fundo").css("background-image") == "url(/Application/View/img/"+backgrounds[rand]+")") {
+        while ($("#fundo").css("background-image") == "url(/Application/View/img/"+backgrounds[rand]+")") {
             rand = Math.floor(Math.random() * backgrounds.length);
         }
         return backgrounds[rand];
@@ -147,19 +147,19 @@ $('document').ready(function() {
 
     $.getRandomCoords = function() {
         return new Array(
-                Math.floor((Math.random() * (TAMANHOMAPA - TAMANHODINHEIRO))),
-                Math.floor((Math.random() * (TAMANHOMAPA - TAMANHODINHEIRO)))
+                Math.floor((Math.random() * (mapSize - TAMANHODINHEIRO))),
+                Math.floor((Math.random() * (mapSize - TAMANHODINHEIRO)))
             );
     }
 
     $.calculateMessagePosition = function(arrPosObjeto) {
         posLeft = parseInt(arrPosObjeto[0]);
-        if ((posLeft + 90) >= 500) {
-            dif = (posLeft + 90) - 500;
-            posLeft = parseInt(arrPosObjeto[0]) - ((posLeft + 90) - 500);
+        if ((posLeft + 90) >= mapSize) {
+            dif = (posLeft + 90) - mapSize;
+            posLeft = parseInt(arrPosObjeto[0]) - ((posLeft + 90) - mapSize);
         }
         posTop = (parseInt(arrPosObjeto[1]) + 52);
-        if ((posTop + 30) >= 500) {
+        if ((posTop + 30) >= mapSize) {
             posTop = parseInt(arrPosObjeto[1]) - 30;
         }
         return new Array(posLeft, posTop);
@@ -192,15 +192,15 @@ $('document').ready(function() {
     }
 
     $.set2ndPolicemanPosition = function() {
-        if (arrPosLadrao[0] > (TAMANHOMAPA / 2)) {
+        if (arrPosLadrao[0] > (mapSize / 2)) {
             arrPosPolicia2[0] = 0;
-        } else if (arrPosLadrao[0] < (TAMANHOMAPA / 2)) {
-            arrPosPolicia2[0] = (TAMANHOMAPA - TAMANHOOBJETO);
+        } else if (arrPosLadrao[0] < (mapSize / 2)) {
+            arrPosPolicia2[0] = (mapSize - TAMANHOOBJETO);
         }
-        if (arrPosLadrao[1] > (TAMANHOMAPA / 2)) {
+        if (arrPosLadrao[1] > (mapSize / 2)) {
             arrPosPolicia2[1] = 0;
-        } else if (arrPosLadrao[1] < (TAMANHOMAPA / 2)) {
-            arrPosPolicia2[1] = (TAMANHOMAPA - TAMANHOOBJETO);
+        } else if (arrPosLadrao[1] < (mapSize / 2)) {
+            arrPosPolicia2[1] = (mapSize - TAMANHOOBJETO);
         }
         $.setObjectPosition($("#policia2"), arrPosPolicia2);
     }

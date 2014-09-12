@@ -53,7 +53,7 @@ $('document').ready(function() {
                 movimentacaoPolicia1 = speedTable[faseAtual][0];
                 movimentacaoPolicia2 = speedTable[faseAtual][1];
                 if (faseAtual < FASEDOISPOLICIAS) {
-                    arrPosPolicia2[0] = (TAMANHOMAPA - TAMANHOOBJETO);
+                    arrPosPolicia2[0] = (mapSize - TAMANHOOBJETO);
                     arrPosPolicia2[1] = 0;
                     $.setObjectPosition($("#policia2"), arrPosPolicia2);
                     $("#contador2").hide();
@@ -215,9 +215,9 @@ $('document').ready(function() {
     }
 
     $.mudaBackground = function() {
-        $("#l_fundo").css(
-            "background-image",
-            "url(/Application/View/img/"+$.sorteiaFundo()+")"
+        $("#backgroundImage").attr(
+            "src",
+            "/Application/View/img/"+$.sorteiaFundo()
         );
     }
 

@@ -9,7 +9,7 @@ $(document).on("keydown", function(e) {
 
 $(document).on("ready", function() {
 
-    /*var fundo = document.getElementById("l_fundo"),
+    /*var fundo = document.getElementById("fundo"),
         hammertime = new Hammer(fundo);*/
 
     /*$.ionSound({
@@ -20,6 +20,19 @@ $(document).on("ready", function() {
         multiPlay: true,
         volume: "1.0"
     });*/
+
+    mapSize = $("#fundo").css("width").replace(new RegExp("px", 'g'), "");
+    $("#fundo").css("height", mapSize);
+    $(".barraInfo").css("top", mapSize);
+    $(".presentation").css("height", mapSize);
+    $("#backgroundImage").attr("width", mapSize+"px");
+    $("#backgroundImage").attr("height", mapSize+"px");
+    $("#presentationImage").attr("width", mapSize+"px");
+    $("#presentationImage").attr("height", mapSize+"px");
+
+
+    // Setar a altura do fundo
+    // mudar o tamanho do mapa / scriptss
 
     $.gameLoop = function() {
         if (jogoOn == true) {
@@ -76,7 +89,8 @@ $(document).on("ready", function() {
 
     $.displayGameInfo = function() {
         $("#pontos").html("0");
-        $("#l_fundo").css("background-image", "url(/Application/View/img/background_v2.jpg)");
+        $("#backgroundImage").attr("src", "/Application/View/img/background_v2.jpg");
+        //$("#fundo").css("background-image", "url(/Application/View/img/background_v2.jpg)");
         $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
         $("#actionLegenda").html('');
         $("#fase").html(faseAtual);
@@ -110,7 +124,7 @@ $(document).on("ready", function() {
         $("#ladrao").show();
         $("#policia").show();
         $("#dinheiro").show();
-        //$("#l_fundo").show();
+        //$("#fundo").show();
         $("#scoreBar").show();
     }
 
@@ -131,9 +145,9 @@ $(document).on("ready", function() {
         tempoMolotov = 0;
         arrPosLadrao[0] = 0;
         arrPosLadrao[1] = 0;
-        arrPosPolicia1[0] = 500 - TAMANHOOBJETO;
-        arrPosPolicia1[1] = 500 - TAMANHOOBJETO;
-        arrPosPolicia2[0] = 500 - TAMANHOOBJETO;
+        arrPosPolicia1[0] = mapSize - TAMANHOOBJETO;
+        arrPosPolicia1[1] = mapSize - TAMANHOOBJETO;
+        arrPosPolicia2[0] = mapSize - TAMANHOOBJETO;
         arrPosPolicia2[1] = 0;
     }
 
@@ -264,7 +278,7 @@ $(document).on("ready", function() {
         bombaVis = false;
         jogoOn = false;
 
-        //$("#l_fundo").css("background-image", "url()");
+        //$("#fundo").css("background-image", "url()");
         $(".backgroundTap").hide();
         $("#ladrao").hide();
         $("#policia").hide();
@@ -286,9 +300,9 @@ $(document).on("ready", function() {
     $("#resetGame").on("tap", function() {
         justOpened = $("#justOpened");
         if (justOpened.val() == 1) {
-            $("#presentation").css(
-                "background-image",
-                "url('/Application/View/img/detalhes.gif')"
+            $("#presentationImage").attr(
+                "src",
+                "/Application/View/img/detalhes.gif"
             );
             justOpened.val(0);
         } else {
@@ -299,7 +313,7 @@ $(document).on("ready", function() {
 
     //Hammer(fundo).on("swipeleft", function() {
     //hammertime.on("swipeleft", function() {
-    $("#l_fundo").on("swipeleft", function() {
+    $("#fundo").on("swipeleft", function() {
         tecla = 37;
     }).on("swiperight", function() {
         tecla = 39;

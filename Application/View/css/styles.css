@@ -20,7 +20,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 500;
+	width: 100%;
 	height: 500;
 	background-color: #000000;
 	background-image: url('/Application/View/img/background_v2.jpg');
@@ -41,12 +41,11 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 500;
+	width: 100%;
 	height: 500;
 	background-color: #FFFFFF;
 	color: #000000;
 	display: block;
-	background-image: url('/Application/View/img/title.png');
 }
 
 .animation {
@@ -71,7 +70,7 @@ body {
 }
 
 .barraAction {
-	padding-top: 500px;
+	padding-top: 100%;
 	background-color: #450000;
 	height: 40px;
 	text-align: center;
@@ -150,7 +149,7 @@ body {
 	position: absolute;
 	float: left;
 	top: 500px;
-	width: 500px;
+	width: 100%;
 	height: 100px;
 	border-bottom-style: solid;
     border-bottom-width: 5px;
@@ -198,7 +197,7 @@ body {
 	display: none;
 	left: 0px;
 	top: 0px;
-	width: 500px;
+	width: 100%;
 	height: 500px;
 }
 
@@ -209,7 +208,7 @@ body {
 	display: none;
 	left: 0px;
 	top: 0px;
-	width: 500px;
+	width: 100%;
 	height: 500px;
 }
 
@@ -283,7 +282,7 @@ body {
 	top: 0px;
 	left: 0px;
 	display: none;
-	width: 500px;
+	width: 100%;
 	height: 500px;
 	background-color: #450000;
 }
@@ -294,7 +293,7 @@ body {
 	top: 9px;
 	font-size: 35px;
 	color: #FFF;
-	width: 500px;
+	width: 100%;
 	text-align: center;
 }
 
@@ -329,7 +328,7 @@ body {
 	float: left;
 	font-size: 20px;
 	color: #FFF;
-	width: 500px;
+	width: 100%;
 	top: 453px;
 	text-align: center;
 	display: none;
@@ -353,14 +352,14 @@ body {
 	float: left;
 	position: absolute;
 	font-size: 16px;
-	padding-left: 76px;
+	padding-left: 70px;
 	font-size: 18px;
 }
 
 .ladraoInstruction {
 	float: left;
 	position: absolute;
-	padding-left: 145px;
+	padding-left: 130px;
 }
 
 .collectLabel {
@@ -429,4 +428,17 @@ body {
 
 #resetGame {
 	display: none;
+}
+
+.barLeft {
+	float: left;
+	padding-top: 10px;
+	position: absolute;
+	width: 78%;
+}
+
+.barRight {
+	float: left;
+	padding-left: 78%;
+	position: absolute;
 }

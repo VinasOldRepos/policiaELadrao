@@ -1,5 +1,4 @@
-var TAMANHOMAPA = 500,
-    TAMANHOOBJETO = 50,
+var TAMANHOOBJETO = 50,
     TAMANHODINHEIRO = 25,
     TEMPOPADRAO = 20,
     PONTOSPORFASE = 40,
@@ -12,7 +11,8 @@ var TAMANHOMAPA = 500,
     CATCHTOLERANCE = 15,
     CROSSBORDERTOLERANCE = 20;
 
-var tecla,
+var mapSize = 500,
+    tecla,
 	posRelX,
 	posRelY,
 	diferencaX,
