@@ -30,10 +30,6 @@ $(document).on("ready", function() {
     $("#presentationImage").attr("width", mapSize+"px");
     $("#presentationImage").attr("height", mapSize+"px");
 
-
-    // Setar a altura do fundo
-    // mudar o tamanho do mapa / scriptss
-
     $.gameLoop = function() {
         if (jogoOn == true) {
             objLadrao = $("#ladrao");

@@ -90,7 +90,7 @@ $('document').ready(function() {
 
     $.sorteiaFundo = function() {
         var rand = Math.floor(Math.random() * backgrounds.length);
-        while ($("#fundo").css("background-image") == "url(/Application/View/img/"+backgrounds[rand]+")") {
+        while ($("#backgroundImage").attr("src") == "url(/Application/View/img/"+backgrounds[rand]+")") {
             rand = Math.floor(Math.random() * backgrounds.length);
         }
         return backgrounds[rand];
