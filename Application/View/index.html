@@ -19,36 +19,20 @@
 
 <div id="presentation" class="presentation"><img id="presentationImage" src="/Application/View/img/title.png" /></div>
 
-<div id="ladrao" class="personagem">
-	<img src="/Application/View/img/ladrao_01.gif" width="50" height="50" />
-</div>
-
-<div id="policia" class="personagem">
-    <img id="policiaImagem" src="/Application/View/img/guarda.gif" width="50" height="50" />
-</div>
-
-<div id="policia2" class="personagem">
-    <img id="policiaImagem2" src="/Application/View/img/guarda.gif" width="50" height="50" />
-</div>
+<img id="ladrao" class="personagem" src="/Application/View/img/ladrao_01.gif" />
+<img id="policia" class="personagem" src="/Application/View/img/guarda.gif" />
+<img id="policia2" class="personagem" src="/Application/View/img/guarda.gif" />
 
 <div id="contador" class="contador">666</div>
 <div id="contador2" class="contador">666</div>
 
-<div id="relogio" class="item" />
-    <img src="/Application/View/img/clock.png" width="25" height="25" />
-</div>
-<div id="dinheiro" class="item" />
-    <img src="/Application/View/img/money2.png" width="25" height="25" />
-</div>
-<div id="molotov" class="item" />
-    <img src="/Application/View/img/molotov_v2.png" width="25" height="25" />
-</div>
-<div id="bomba" class="item" />
-    <img src="/Application/View/img/bomb_v2.png" width="25" height="25" />
-</div>
+<img id="relogio" class="item" src="/Application/View/img/clock.png" />
+<img id="dinheiro" class="item" src="/Application/View/img/money2.png" />
+<img id="molotov" class="item" src="/Application/View/img/molotov_v2.png" />
+<img id="bomba" class="item" src="/Application/View/img/bomb_v2.png" />
 
 <div id="busted" class="busted">
-    <img src="/Application/View/img/busted_v2.png" width="100%" height="500" alt="You got busted!" />
+    <img class="endGameImage" src="/Application/View/img/busted_v2.png" alt="You got busted!" />
     <div id="loginStatus">
     </div>
     <div class="facebookLoginButton" id="facebookLoginButton">
@@ -57,7 +41,7 @@
 </div>
 
 <div id="timeUp" class="timeUp">
-    <img src="/Application/View/img/timeisup_01.png" width="100%" height="500" alt="Time is up!" />
+    <img class="endGameImage" src="/Application/View/img/timeisup_01.png" alt="Time is up!" />
     <div id="loginStatus">
     </div>
     <div class="facebookLoginButton" id="facebookLoginButton">
@@ -82,52 +66,39 @@
     <div id="rankingLinkButton" data-rankingType="alltimes">CHECK ALL TIMES RANKING</div>
 </div>
 
-<!--div id="touchUp" class="TapUp backgroundTap"></div>
-<div id="touchLeft" class="TapLeft backgroundTap"></div>
-<div id="touchDown" class="TapDown backgroundTap"></div>
-<div id="touchRight" class="TapRight backgroundTap"></div -->
-
-<!--div class="barraAction">
-    <div class="action" id="actionLegenda"></div>
-</div-->
-
 <div class="barraInfo">
     <div class="barLeft">
         <div id="instructionsBar" class="bar">
-            <div class="setas">
-                <img src="/Application/View/img/setas.png" width="48" height="70" alt="slide to move" />
-            </div>
+            <img class="setas" src="/Application/View/img/setas.png" alt="slide to move" />
             <div class="slideLabel">slide to move</div>
-            <div class="ladraoInstruction">
-                <img src="/Application/View/img/ladrao_bar.png" width="99" height="86" alt="slide to move" />
-            </div>
+            <img class="ladraoInstruction" src="/Application/View/img/ladrao_bar.png" alt="slide to move" />
             <div class="collectLabel">
                 collect
                 <div class="items">
-                    <div style="float: left; padding-right: 14px;"><img src="/Application/View/img/money2.png" width="25" height="25" /></div>
-                    <div style="float: left; padding-right: 14px;"><img src="/Application/View/img/molotov_v2.png" width="25" height="25" /></div>
-                    <div style="float: left;"><img src="/Application/View/img/bomb_v2.png" width="25" height="25" /></div>
+                    <img class="barItem" src="/Application/View/img/money2.png" />
+                    <img class="barItem" src="/Application/View/img/molotov_v2.png" />
+                    <img class="barItem" src="/Application/View/img/bomb_v2.png" />
                 </div>
             </div>
         </div>
         <div id="scoreBar" class="bar">
-            <div style="float: left; padding-left: 10px; position: absolute;">
+            <div class="barBox" id="timeBox">
                 <div class="tituloMostrador">Time:</div>
                 <div id="tempo" class="mostrador">666</div>
             </div>
-            <div style="float: left; padding-left: 120px; position: absolute;">
+            <div class="barBox" id="scoreBox">
                 <div class="tituloMostrador">Score:</div>
                 <div id="pontos" class="mostrador">0</div>
             </div>
-            <div style="float: left; padding-left: 240px; position: absolute; width: 95px;">
+            <div class="barBox" id="dificultyBox">
                 <div class="tituloMostrador">Dificulty:</div>
                 <div id="fase" class="mostrador">0</div>
             </div>
         </div>
     </div>
     <div class="barRight">
-        <img id="resetGame" src="/Application/View/img/start.png" width="100" height="100" />
-        <img id="loading" src="/Application/View/img/loader.gif" width="100" height="100" />
+        <img id="resetGame" class="actionButton" src="/Application/View/img/start.png" />
+        <img id="loading" class="actionButton" src="/Application/View/img/loader.gif" />
     </div>
 </div>
 

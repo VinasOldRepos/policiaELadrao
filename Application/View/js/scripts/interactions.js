@@ -3,7 +3,7 @@ $('document').ready(function() {
     // Função que checa se ladrão pegou o dinheiro
     $.pegouDinheiro = function() {
         // Se ladrão pegou dinheiro
-        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosDinheiro, TAMANHODINHEIRO)) {
+        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosDinheiro, TAMANHOITEM)) {
             $.ganhaPontos()
             tempo = tempo + TEMPOBONUS;
             dinheiroVis = false;
@@ -14,7 +14,7 @@ $('document').ready(function() {
     // Função que checa se ladrão pegou o relógio
     $.pegouRelogio = function() {
         // Se ladrão pegou relógio
-        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosRelogio, TAMANHODINHEIRO)) {
+        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosRelogio, TAMANHOITEM)) {
             $.ganhaPontos();
             tempo = tempo + 10;
             $("#relogio").hide();
@@ -26,14 +26,14 @@ $('document').ready(function() {
     // Função que checa se ladrão pegou o molotov
     $.pegouMolotov = function() {
         // Se ladrão pegou o molotov
-        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosMolotov, TAMANHODINHEIRO)) {
+        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosMolotov, TAMANHOITEM)) {
             //$.ionSound.play("heehee");
             tempoMolotov = PAUSAMOLOTOV;
             $.ganhaPontos();
             $("#molotov").hide();
-            $("#policiaImagem").attr("src", "/Application/View/img/guarda_fogo_02.gif");
+            $("#policia").attr("src", "/Application/View/img/guarda_fogo_02.gif");
             if (faseAtual >= FASEDOISPOLICIAS) {
-                $("#policiaImagem2").attr("src", "/Application/View/img/guarda_fogo_02.gif");
+                $("#policia2").attr("src", "/Application/View/img/guarda_fogo_02.gif");
             }
             molotovVis = false;
             $.feedBackMolotov();
@@ -43,7 +43,7 @@ $('document').ready(function() {
     // Função que checa se ladrão pegou a bomba
     $.pegouBomba = function() {
         // Se ladrão pegou o molotov
-        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosBomba, TAMANHODINHEIRO)) {
+        if ($.alcancou(arrPosLadrao, TAMANHOOBJETO, arrPosBomba, TAMANHOITEM)) {
             $.ganhaPontos();
             $("#bomba").hide();
             $.flashPolicia();

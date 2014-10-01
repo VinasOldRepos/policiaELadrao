@@ -127,10 +127,10 @@ $('document').ready(function() {
             }
         }
         if (tempoMolotov == 0) {
-            $("#policiaImagem").attr("src", "/Application/View/img/guarda.gif");
+            $("#policia").attr("src", "/Application/View/img/guarda.gif");
             $("#contador").hide();
             if (faseAtual >= FASEDOISPOLICIAS) {
-                $("#policiaImagem2").attr("src", "/Application/View/img/guarda.gif");
+                $("#policia2").attr("src", "/Application/View/img/guarda.gif");
                 $("#contador2").hide();
             }
         }
@@ -147,20 +147,20 @@ $('document').ready(function() {
 
     $.getRandomCoords = function() {
         return new Array(
-                Math.floor((Math.random() * (mapSize - TAMANHODINHEIRO))),
-                Math.floor((Math.random() * (mapSize - TAMANHODINHEIRO)))
+                Math.floor((Math.random() * (mapSize - TAMANHOITEM))),
+                Math.floor((Math.random() * (mapSize - TAMANHOITEM)))
             );
     }
 
     $.calculateMessagePosition = function(arrPosObjeto) {
         posLeft = parseInt(arrPosObjeto[0]);
-        if ((posLeft + 90) >= mapSize) {
-            dif = (posLeft + 90) - mapSize;
-            posLeft = parseInt(arrPosObjeto[0]) - ((posLeft + 90) - mapSize);
+        if ((posLeft + $.regraDeTres(90, mapSize)) >= mapSize) {
+            dif = (posLeft + $.regraDeTres(90, mapSize)) - mapSize;
+            posLeft = parseInt(arrPosObjeto[0]) - ((posLeft + $.regraDeTres(90, mapSize)) - mapSize);
         }
-        posTop = (parseInt(arrPosObjeto[1]) + 52);
-        if ((posTop + 30) >= mapSize) {
-            posTop = parseInt(arrPosObjeto[1]) - 30;
+        posTop = (parseInt(arrPosObjeto[1]) + $.regraDeTres(52, mapSize));
+        if ((posTop + $.regraDeTres(30, mapSize)) >= mapSize) {
+            posTop = parseInt(arrPosObjeto[1]) - $.regraDeTres(30, mapSize);
         }
         return new Array(posLeft, posTop);
     }
@@ -204,4 +204,9 @@ $('document').ready(function() {
         }
         $.setObjectPosition($("#policia2"), arrPosPolicia2);
     }
+
+    $.regraDeTres = function(atual, mapSize)  {
+        return Math.floor((atual / 500) * mapSize);
+    }
+
 });

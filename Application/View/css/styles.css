@@ -30,14 +30,6 @@ body {
 	transition: src 0.3s ease;
 }
 
-.backgroundTap {
-	position: absolute;
-	background-image: url('/Application/View/img/arrow_up_02.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	display: none;
-}
-
 .presentation {
 	position: absolute;
 	top: 0;
@@ -47,13 +39,6 @@ body {
 	background-color: #FFFFFF;
 	color: #000000;
 	display: block;
-}
-
-.animation {
-	position: absolute;
-	float: left;
-	left: 50px;
-	top: 200px;
 }
 
 .personagem {
@@ -68,81 +53,6 @@ body {
 	position: absolute;
 	width: 25;
 	height: 25;
-}
-
-.barraAction {
-	padding-top: 100%;
-	background-color: #450000;
-	height: 40px;
-	text-align: center;
-}
-
-.TapUp {
-	float: right;
-    top: 1;
-    left: 115;
-    width: 270;
-    height: 160;
-	/*background-color: #686654;
-    /*top: 10;
-    left: 140;
-    width: 300;
-    height: 200;*/
-
-}
-
-.TapDown {
-	float: left;
-	top: 340;
-	left: 115;
-	width: 270;
-	height: 160;
-	/*background-color: #686654;
-	/*top: 370;
-	left: 140;
-	width: 300;
-	height: 200;*/
-	-webkit-transform: rotate(-180deg);
-	-moz-transform: rotate(-180deg);
-	-ms-transform: rotate(-180deg);
-	-o-transform: rotate(-180deg);
-	transform: rotate(-180deg);
-}
-
-.TapLeft {
-	float: left;
-	top: 145;
-	left: 30;
-	width: 160;
-	height: 210;
-	/*background-color: #686;
-	/*top: 140;
-	left: 34;
-	width: 200;
-	height: 300;*/
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
-	-o-transform: rotate(-90deg);
-	transform: rotate(-90deg);
-}
-
-.TapRight {
-	float: left;
-	top: 145;
-	left: 308;
-	width: 160;
-	height: 210;
-	/*background-color: #686;
-	/*top: 140;
-	left: 348;
-	width: 200;
-	height: 300;*/
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
 }
 
 .barraInfo {
@@ -242,7 +152,6 @@ body {
 	height: 50px;
 	left: 30px;
 	top: 98px;
-	
 }
 
 .formRanking .btVerRanking {
@@ -352,7 +261,6 @@ body {
 .slideLabel {
 	float: left;
 	position: absolute;
-	font-size: 16px;
 	padding-left: 70px;
 	font-size: 18px;
 }
@@ -376,7 +284,11 @@ body {
 	float: left;
 	position: absolute;
 	color: #FFD61F;
+}
 
+.barBox {
+	float: left;
+	position: absolute;
 }
 
 .items {
@@ -441,5 +353,14 @@ body {
 .barRight {
 	float: left;
 	padding-left: 78%;
+	position: absolute;
+}
+
+.barItem {
+	float: left;
+}
+
+.timeBox {
+	float: left;
 	position: absolute;
 }
